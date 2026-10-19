@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sic-ml.local/schemas/evento.schema.json",
+  "title": "SIC-ML Event v1",
+  "type": "object",
+  "required": ["schema", "module", "event_type", "attack_type", "severity"],
+  "properties": {
+    "schema": { "const": "sicml.event.v1" },
+    "@timestamp": { "type": "string", "format": "date-time" },
+    "module": { "enum": ["ids", "iot", "phishing", "web"] },
+    "event_type": { "type": "string" },
+    "attack_type": { "type": "string" },
+    "severity": { "enum": ["critica", "alta", "media", "baja"] },
+    "score": { "type": ["number", "null"] },
+    "payload": { "type": "object" }
+  }
+}

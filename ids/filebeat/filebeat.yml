@@ -1,0 +1,18 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/suricata/eve.json
+    json.keys_under_root: true
+    json.add_error_key: true
+    fields:
+      sicml.module: ids
+    fields_under_root: true
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  index: "sicml-suricata-%{+yyyy.MM.dd}"
+
+setup.ilm.enabled: false
+setup.template.name: "sicml-suricata"
+setup.template.pattern: "sicml-suricata-*"

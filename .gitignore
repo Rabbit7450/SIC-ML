@@ -1,0 +1,43 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# Secrets y entorno
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Modelos y datos pesados
+datasets/**/*.csv
+datasets/**/*.txt
+datasets/**/*.zip
+datasets/**/*.gz
+datasets/**/*.pcap
+!datasets/**/README.md
+ids/ml/artifacts/
+*.joblib
+*.pkl
+*.h5
+*.keras
+
+# Docker / ELK volúmenes locales
+lab/data/
+elasticsearch-data/
+
+# IDE y SO
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log

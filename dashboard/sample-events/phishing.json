@@ -1,0 +1,10 @@
+{
+  "schema": "sicml.event.v1",
+  "@timestamp": "2026-10-18T22:42:00Z",
+  "module": "phishing",
+  "event_type": "url_score",
+  "attack_type": "phish",
+  "severity": "alta",
+  "score": 0.94,
+  "payload": { "url_length": 64, "https": 0, "suspicious_tld": 1 }
+}
