@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* Amber Forest — dark by default */
+:root {
+  --primary: #f59e0b;
+  --primary-dark: #d97706;
+  --secondary: #10b981;
+  --accent: #f43f5e;
+  --background: #1c1917;
+  --background-elevated: #292524;
+  --foreground: #fef3c7;
+  --muted: #78716c;
+  --border: #44403c;
+  --success: #84cc16;
+  --warning: #f59e0b;
+  --cream: #fffbeb;
+  --stone: #44403c;
+  --card: #211f1c;
+  --glow: rgba(245, 158, 11, 0.35);
+  --radius: 0.75rem;
+}
+
+html.light {
+  --background: #fffbeb;
+  --background-elevated: #fef3c7;
+  --foreground: #44403c;
+  --muted: #78716c;
+  --border: #e7e5e4;
+  --card: #ffffff;
+  --glow: rgba(217, 119, 6, 0.2);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-cream: var(--cream);
+  --color-stone: var(--stone);
+  --color-card: var(--card);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-syne);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(245, 158, 11, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(16, 185, 129, 0.08), transparent 50%),
+    var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-syne), var(--font-dm-sans), sans-serif;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.glow-amber {
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25), 0 0 24px var(--glow);
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 158, 11, 0.08),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -12,7 +12,10 @@ Sistema Integrado de Ciberseguridad con Machine Learning: IDS, IoT seguro, anti-
 /docs        Estado del arte, DoD y guía de despliegue
 /datasets    Datasets académicos (no versionados)
 /web-audit   Auditoría defensiva de cabeceras y exposición
+/sic-ml-web  App Next.js 15 + Supabase (Amber Forest, soft delete)
 ```
+
+La app web vive en `sic-ml-web/` (Vercel gratis). Ver `sic-ml-web/README.md`.
 
 ## Requisitos de entorno (FASE 0)
 

@@ -81,7 +81,7 @@ def main() -> None:
         scoring="f1",
         cv=3,
         random_state=42,
-        n_jobs=-1,
+        n_jobs=1,
     )
     rf_search.fit(X_train, y_train)
     rf = rf_search.best_estimator_

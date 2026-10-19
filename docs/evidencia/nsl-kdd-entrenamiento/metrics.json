@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-10-19T02:58:29Z",
+  "results": {
+    "random_forest": {
+      "accuracy": 0.9991003386960203,
+      "precision": 0.9985169072572672,
+      "recall": 0.9998019998019998,
+      "f1": 0.9991590403165966,
+      "confusion_matrix": [
+        [
+          8780,
+          15
+        ],
+        [
+          2,
+          10099
+        ]
+      ],
+      "best_params": {
+        "n_estimators": 100,
+        "min_samples_leaf": 1,
+        "max_depth": null
+      },
+      "val_f1": 0.9991094399366713
+    },
+    "svm_linear": {
+      "accuracy": 0.9761854360711262,
+      "precision": 0.9729491326080565,
+      "recall": 0.9827739827739828,
+      "f1": 0.9778368794326241,
+      "confusion_matrix": [
+        [
+          8519,
+          276
+        ],
+        [
+          174,
+          9927
+        ]
+      ]
+    }
+  },
+  "reports": {
+    "random_forest": "              precision    recall  f1-score   support\n\n           0       1.00      1.00      1.00      8795\n           1       1.00      1.00      1.00     10101\n\n    accuracy                           1.00     18896\n   macro avg       1.00      1.00      1.00     18896\nweighted avg       1.00      1.00      1.00     18896\n",
+    "svm_linear": "              precision    recall  f1-score   support\n\n           0       0.98      0.97      0.97      8795\n           1       0.97      0.98      0.98     10101\n\n    accuracy                           0.98     18896\n   macro avg       0.98      0.98      0.98     18896\nweighted avg       0.98      0.98      0.98     18896\n"
+  },
+  "best_model": "random_forest",
+  "why": "Se elige random_forest por F1 de test 0.9992, priorizando equilibrio precision/recall sobre accuracy cruda."
+}
