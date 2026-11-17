@@ -1,0 +1,8 @@
+{
+  "payload_plain_bytes": 56,
+  "payload_protected_bytes": 116,
+  "size_overhead_bytes": 60,
+  "latency_plain_ms": 5.870000040886225e-05,
+  "latency_protected_ms": 0.007411300000057963,
+  "nota_energia": "Medir mA con INA219 en el ESP32; registrar aqu\u00ed los promedios."
+}

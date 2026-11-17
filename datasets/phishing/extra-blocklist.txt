@@ -1,0 +1,29 @@
+# Lista extra local de SIC-ML (se suma a phishing-domains-ACTIVE.txt).
+# Dominios usados en el laboratorio / ejemplos de la memoria.
+secure-update.net
+verify-account.xyz
+secure-login.net
+account-verify.net
+security-check.net
+billing-update.ml
+signin-check.tk
+login-verify.top
+paypa1.com
+g00gle.com
+amaz0n.com
+faceb00k.com
+micros0ft.com
+app1e.com
+netf1ix.com
+tw1tter.com
+insta9ram.com
+arnazon.com
+arnaz0n.com
+amazno.com
+amazoon.com
+amazom.com
+amaz0n.net
+paypaI.com
+micr0soft.com
+g00gle.net
+facebo0k.com

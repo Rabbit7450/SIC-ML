@@ -1,0 +1,5 @@
+{
+  "algorithm": "neural_net_sklearn",
+  "artifact": "nn_mlp.joblib",
+  "selection_metric": "val_f1"
+}

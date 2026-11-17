@@ -1,0 +1,5 @@
+{
+  "f1": 1.0,
+  "meets_target": true,
+  "report": "              precision    recall  f1-score   support\n\n       legit       1.00      1.00      1.00        83\n       phish       1.00      1.00      1.00        88\n\n    accuracy                           1.00       171\n   macro avg       1.00      1.00      1.00       171\nweighted avg       1.00      1.00      1.00       171\n"
+}

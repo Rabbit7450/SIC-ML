@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* Quiet, high contrast palette for a security operations workspace. */
+:root {
+  --primary: #315b86;
+  --primary-dark: #26496f;
+  --on-primary: #ffffff;
+  --secondary: #377c69;
+  --accent: #b54747;
+  --background: #f4f6f8;
+  --background-elevated: #edf1f5;
+  --foreground: #202b38;
+  --muted: #5d6b7a;
+  --border: #d8e0e8;
+  --success: #377c69;
+  --warning: #956317;
+  --cream: #ffffff;
+  --card: #ffffff;
+  --glow: rgba(49, 91, 134, 0.08);
+  --chart-ids: #315b86;
+  --chart-iot: #377c69;
+  --chart-phishing: #b54747;
+  --radius: 0.75rem;
+}
+
+html.dark {
+  --primary: #8eb3dc;
+  --primary-dark: #a9c6e5;
+  --on-primary: #202b38;
+  --secondary: #7db6a4;
+  --accent: #e38b8b;
+  --background: #151b22;
+  --background-elevated: #202832;
+  --foreground: #e7edf3;
+  --muted: #a2afbd;
+  --border: #34404d;
+  --success: #7db6a4;
+  --warning: #e4bb70;
+  --cream: #202832;
+  --card: #1b232c;
+  --glow: rgba(142, 179, 220, 0.08);
+  --chart-ids: #8eb3dc;
+  --chart-iot: #7db6a4;
+  --chart-phishing: #e38b8b;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-cream: var(--cream);
+  --color-card: var(--card);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 56% 62% at 5% 5%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 78%),
+    radial-gradient(ellipse 48% 56% at 96% 92%, color-mix(in srgb, var(--secondary) 7%, transparent), transparent 78%),
+    linear-gradient(var(--background), var(--background));
+  background-size: 150% 150%, 145% 145%, 100% 100%;
+  background-position: 0% 0%, 100% 100%, 0 0;
+  background-attachment: fixed;
+  animation: ambient-shift 32s ease-in-out infinite alternate, grid-drift 48s linear infinite;
+  color: var(--foreground);
+  min-height: 100vh;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+select,
+input,
+textarea {
+  touch-action: manipulation;
+}
+
+.grain::after {
+  content: none;
+}
+
+.surface-emphasis {
+  box-shadow: 0 1px 2px var(--glow);
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, var(--background-elevated), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes ambient-shift {
+  0% { background-position: 0% 0%, 100% 100%, 0 0; }
+  100% { background-position: 22% 18%, 78% 82%, 0 0; }
+}
+
+@keyframes grid-drift {
+  from { background-position: 0% 0%, 100% 100%, 0 0; }
+  to { background-position: 22% 18%, 78% 82%, 110px 110px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

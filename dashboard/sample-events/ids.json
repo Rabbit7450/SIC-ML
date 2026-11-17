@@ -1,0 +1,10 @@
+{
+  "schema": "sicml.event.v1",
+  "@timestamp": "2026-10-18T22:40:00Z",
+  "module": "ids",
+  "event_type": "classification",
+  "attack_type": "attack",
+  "severity": "alta",
+  "score": 0.91,
+  "payload": { "src_ip": "192.168.1.10", "dest_ip": "192.168.1.1", "latency_ms": 12.4 }
+}

@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-11-07T03:04:38Z",
+  "dataset": "ISCX NSL-KDD KDDTest+.txt (official held-out test file)",
+  "records": 22544,
+  "positive_class": "attack",
+  "label_mapping": {
+    "0": "attack",
+    "1": "normal"
+  },
+  "selection_or_threshold_tuned_on_this_test": false,
+  "source_sha256": "fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84",
+  "results": {
+    "random_forest": {
+      "accuracy": 0.7635290986515259,
+      "precision_attack": 0.9682896379525593,
+      "recall_attack": 0.6043793345281696,
+      "f1_attack": 0.7442306769658878,
+      "confusion_matrix_labels_attack_normal": [
+        [
+          7756,
+          5077
+        ],
+        [
+          254,
+          9457
+        ]
+      ]
+    },
+    "neural_net": {
+      "accuracy": 0.8147622427253371,
+      "precision_attack": 0.9686045252787702,
+      "recall_attack": 0.6971869399205174,
+      "f1_attack": 0.8107838695061169,
+      "confusion_matrix_labels_attack_normal": [
+        [
+          8947,
+          3886
+        ],
+        [
+          290,
+          9421
+        ]
+      ]
+    },
+    "svm_linear": {
+      "accuracy": 0.7482700496806246,
+      "precision_attack": 0.9156794425087108,
+      "recall_attack": 0.6143536195745344,
+      "f1_attack": 0.7353448677890221,
+      "confusion_matrix_labels_attack_normal": [
+        [
+          7884,
+          4949
+        ],
+        [
+          726,
+          8985
+        ]
+      ]
+    }
+  }
+}

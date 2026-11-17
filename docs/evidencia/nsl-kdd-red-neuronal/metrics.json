@@ -1,0 +1,87 @@
+{
+  "generated_at_utc": "2026-11-07T03:04:26Z",
+  "dataset": "NSL-KDD KDDTrain+ training split and official KDDTest+ held-out test",
+  "external_test": {
+    "name": "ISCX NSL-KDD KDDTest+.txt (official held-out test file)",
+    "records": 22544,
+    "sha256": "fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84",
+    "selection_or_threshold_tuned_on_this_test": false
+  },
+  "positive_class": "attack",
+  "environment": {
+    "python": "3.14.8",
+    "scikit_learn": "1.9.1",
+    "numpy": "2.5.4"
+  },
+  "training": {
+    "neural_network": "sklearn MLPClassifier, hidden layers [64, 32], ReLU, Adam, early stopping",
+    "epochs": 21,
+    "validation_attack_f1": 0.9953398499659013,
+    "internal_test_attack_f1": 0.9952806049923238,
+    "model_selected_by_validation": "random_forest",
+    "selection_metric": "val_f1"
+  },
+  "official_kddtest_plus": {
+    "random_forest": {
+      "accuracy": 0.7635290986515259,
+      "precision_attack": 0.9682896379525593,
+      "recall_attack": 0.6043793345281696,
+      "f1_attack": 0.7442306769658878,
+      "confusion_matrix_labels_attack_normal": [
+        [
+          7756,
+          5077
+        ],
+        [
+          254,
+          9457
+        ]
+      ]
+    },
+    "neural_net": {
+      "accuracy": 0.8147622427253371,
+      "precision_attack": 0.9686045252787702,
+      "recall_attack": 0.6971869399205174,
+      "f1_attack": 0.8107838695061169,
+      "confusion_matrix_labels_attack_normal": [
+        [
+          8947,
+          3886
+        ],
+        [
+          290,
+          9421
+        ]
+      ]
+    },
+    "svm_linear": {
+      "accuracy": 0.7482700496806246,
+      "precision_attack": 0.9156794425087108,
+      "recall_attack": 0.6143536195745344,
+      "f1_attack": 0.7353448677890221,
+      "confusion_matrix_labels_attack_normal": [
+        [
+          7884,
+          4949
+        ],
+        [
+          726,
+          8985
+        ]
+      ]
+    }
+  },
+  "artifacts": [
+    "ids/ml/artifacts/nn_mlp.joblib",
+    "ids/ml/artifacts/best_model.joblib",
+    "ids/ml/artifacts/scaler.joblib",
+    "ids/ml/artifacts/feature_names.joblib",
+    "ids/ml/artifacts/model_manifest.json",
+    "ids/ml/artifacts/metrics.json",
+    "ids/ml/artifacts/official_test_metrics.json"
+  ],
+  "limitations": [
+    "NSL-KDD is a legacy benchmark dataset; these results do not establish performance on current production traffic.",
+    "KDDTest+ was held out from model selection; the model remains the validation-selected Random Forest despite the MLP score on the official test."
+  ]
+}

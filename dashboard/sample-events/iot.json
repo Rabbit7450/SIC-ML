@@ -1,0 +1,10 @@
+{
+  "schema": "sicml.event.v1",
+  "@timestamp": "2026-10-18T22:41:00Z",
+  "module": "iot",
+  "event_type": "sensor",
+  "attack_type": "replay",
+  "severity": "alta",
+  "score": 1.0,
+  "payload": { "node": "esp32-01", "nonce": 4, "status": "replay" }
+}

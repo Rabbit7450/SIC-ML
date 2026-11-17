@@ -1,0 +1,316 @@
+=== MAIL ===
+From: test@lab.local
+To: x@lab.local
+Subject: ping
+Message-ID: <af441546-1f30-ab96-6a00-92a0b503f665@lab.local>
+Content-Transfer-Encoding: 7bit
+Date: Mon, 16 Nov 2026 15:30:27 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+hola
+
+=== MAIL ===
+From: "SIC-ML" <no-reply@sic-ml.lab.local>
+To: devsmtp@lab.local
+Subject: =?UTF-8?Q?SIC-ML_=C2=B7_Tu_cuenta_fue_creada_?=
+ =?UTF-8?Q?=E2=80=94_credenciales_de_acceso?=
+Message-ID: <d1c743b5-f9bc-edd2-b11b-64d9d7ef5f70@sic-ml.lab.local>
+Date: Mon, 16 Nov 2026 15:38:23 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-8fec3ab64e93f959-Part_1"
+
+----_NmP-8fec3ab64e93f959-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Usuario SMTP, un administrador cre=C3=B3 tu cuenta en SIC-ML. Estos =
+son tus datos de acceso iniciales:
+
+Usuario (email): devsmtp@lab.local
+Contrase=C3=B1a: ClaveSmtp123!
+
+Acceso: http://localhost:3000/login
+
+Por seguridad: inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes.
+Si no esperabas este correo, avisa al administrador del laboratorio.
+
+=E2=80=94 SIC-ML (laboratorio)
+----_NmP-8fec3ab64e93f959-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+  <div style=3D"font-family:system-ui,sans-serif;max-width:520px;margin:au=
+to;padding:24px;color:#202b38">
+    <h2 style=3D"margin:0 0 =
+12px;font-size:18px;color:#315b86">SIC-ML =C2=B7 Cuenta creada</h2>
+    <p>Hola Usuario SMTP, un administrador cre=C3=B3 tu cuenta en SIC-ML. =
+Estos son tus datos de acceso iniciales:</p>
+    <table =
+style=3D"border-collapse:collapse;margin:16px 0">
+      <tr><td =
+style=3D"padding:6px 12px 6px 0;color:#5d6b7a">Usuario (email)</td><td =
+style=3D"padding:6px 0;font-family:monospace"><strong>devsmtp@lab.=
+local</strong></td></tr>
+      <tr><td style=3D"padding:6px 12px 6px =
+0;color:#5d6b7a">Contrase=C3=B1a</td><td style=3D"padding:6px =
+0;font-family:monospace"><strong>ClaveSmtp123!</strong></td></tr>
+    </table>
+    <p><a href=3D"http://localhost:3000/login" =
+style=3D"background:#315b86;color:#fff;padding:10px =
+16px;border-radius:8px;text-decoration:none">Entrar al panel</a></p>
+    <p style=3D"color:#b54747;font-size:13px"><strong>Seguridad:</strong> =
+inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes. No compartas =
+estas credenciales.</p>
+    <p style=3D"color:#5d6b7a;font-size:12px">Si no=
+ esperabas este correo, avisa al administrador del laboratorio.</p>
+  </div>
+----_NmP-8fec3ab64e93f959-Part_1--
+
+=== MAIL ===
+From: "SIC-ML" <no-reply@sic-ml.lab.local>
+To: prod.smtp@lab.local
+Subject: =?UTF-8?Q?SIC-ML_=C2=B7_Tu_cuenta_fue_creada_?=
+ =?UTF-8?Q?=E2=80=94_credenciales_de_acceso?=
+Message-ID: <61065243-8bc8-d04f-1590-ea128f0cdd94@sic-ml.lab.local>
+Date: Mon, 16 Nov 2026 15:58:36 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-31e33b33d95a091b-Part_1"
+
+----_NmP-31e33b33d95a091b-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Usuario SMTP Prod, un administrador cre=C3=B3 tu cuenta en SIC-ML. =
+Estos son tus datos de acceso iniciales:
+
+Usuario (email): prod.smtp@lab.=
+local
+Contrase=C3=B1a: ClaveSmtp123!
+
+Acceso: http://localhost:3000/login
+
+Por seguridad: inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes.
+Si no esperabas este correo, avisa al administrador del laboratorio.
+
+=E2=80=94 SIC-ML (laboratorio)
+----_NmP-31e33b33d95a091b-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+  <div style=3D"font-family:system-ui,sans-serif;max-width:520px;margin:au=
+to;padding:24px;color:#202b38">
+    <h2 style=3D"margin:0 0 =
+12px;font-size:18px;color:#315b86">SIC-ML =C2=B7 Cuenta creada</h2>
+    <p>Hola Usuario SMTP Prod, un administrador cre=C3=B3 tu cuenta en =
+SIC-ML. Estos son tus datos de acceso iniciales:</p>
+    <table style=3D"border-collapse:collapse;margin:16px 0">
+      <tr><td style=3D"padding:6px 12px 6px 0;color:#5d6b7a">Usuario =
+(email)</td><td style=3D"padding:6px 0;font-family:monospace"><strong>prod.=
+smtp@lab.local</strong></td></tr>
+      <tr><td style=3D"padding:6px 12px =
+6px 0;color:#5d6b7a">Contrase=C3=B1a</td><td style=3D"padding:6px =
+0;font-family:monospace"><strong>ClaveSmtp123!</strong></td></tr>
+    </table>
+    <p><a href=3D"http://localhost:3000/login" =
+style=3D"background:#315b86;color:#fff;padding:10px =
+16px;border-radius:8px;text-decoration:none">Entrar al panel</a></p>
+    <p style=3D"color:#b54747;font-size:13px"><strong>Seguridad:</strong> =
+inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes. No compartas =
+estas credenciales.</p>
+    <p style=3D"color:#5d6b7a;font-size:12px">Si no=
+ esperabas este correo, avisa al administrador del laboratorio.</p>
+  </div>
+----_NmP-31e33b33d95a091b-Part_1--
+
+=== MAIL ===
+From: "SIC-ML" <no-reply@sic-ml.lab.local>
+To: adalit.tic@gmail.com
+Subject: =?UTF-8?Q?SIC-ML_=C2=B7_Tu_contrase=C3=B1a_fue_res?=
+ =?UTF-8?Q?tablecida?=
+Message-ID: <408541b9-e09c-1bc7-ae50-579af3d7452d@sic-ml.lab.local>
+Date: Mon, 16 Nov 2026 16:05:36 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-d7223c270c11bb17-Part_1"
+
+----_NmP-d7223c270c11bb17-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Adalit Ticona Torrez, un administrador restableci=C3=B3 la =
+contrase=C3=B1a de tu cuenta en SIC-ML. Nueva contrase=C3=B1a:
+
+Usuario (email): adalit.tic@gmail.com
+Contrase=C3=B1a: Rabbit07.
+
+Acceso: http://localhost:3000/login
+
+Por seguridad: inicia sesi=C3=B3n y =
+cambia la contrase=C3=B1a cuanto antes.
+Si no esperabas este correo, avisa =
+al administrador del laboratorio.
+
+=E2=80=94 SIC-ML =
+(laboratorio)
+----_NmP-d7223c270c11bb17-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+  <div style=3D"font-family:system-ui,sans-serif;max-width:520px;margin:au=
+to;padding:24px;color:#202b38">
+    <h2 style=3D"margin:0 0 =
+12px;font-size:18px;color:#315b86">SIC-ML =C2=B7 Contrase=C3=B1a =
+restablecida</h2>
+    <p>Hola Adalit Ticona Torrez, un administrador =
+restableci=C3=B3 la contrase=C3=B1a de tu cuenta en SIC-ML. Nueva =
+contrase=C3=B1a:</p>
+    <table style=3D"border-collapse:collapse;margin:16=
+px 0">
+      <tr><td style=3D"padding:6px 12px 6px 0;color:#5d6b7a">Usuario=
+ (email)</td><td style=3D"padding:6px 0;font-family:monospace"><strong>adal=
+it.tic@gmail.com</strong></td></tr>
+      <tr><td style=3D"padding:6px 12px=
+ 6px 0;color:#5d6b7a">Contrase=C3=B1a</td><td style=3D"padding:6px =
+0;font-family:monospace"><strong>Rabbit07.</strong></td></tr>
+    </table>
+    <p><a href=3D"http://localhost:3000/login" style=3D"background:#315b86;=
+color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none">Entrar=
+ al panel</a></p>
+    <p style=3D"color:#b54747;font-size:13px"><strong>Seg=
+uridad:</strong> inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto =
+antes. No compartas estas credenciales.</p>
+    <p style=3D"color:#5d6b7a;f=
+ont-size:12px">Si no esperabas este correo, avisa al administrador del =
+laboratorio.</p>
+  </div>
+----_NmP-d7223c270c11bb17-Part_1--
+
+=== MAIL ===
+From: "SIC-ML" <no-reply@sic-ml.lab.local>
+To: adalit.tic@gmail.com
+Subject: =?UTF-8?Q?SIC-ML_=C2=B7_Tu_contrase=C3=B1a_fue_res?=
+ =?UTF-8?Q?tablecida?=
+Message-ID: <413d8de9-425f-0dfe-9375-59a563d35483@sic-ml.lab.local>
+Date: Mon, 16 Nov 2026 17:07:54 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-8fb2fd62791cdb1d-Part_1"
+
+----_NmP-8fb2fd62791cdb1d-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Adalit Ticona Torrez, un administrador restableci=C3=B3 la =
+contrase=C3=B1a de tu cuenta en SIC-ML. Nueva contrase=C3=B1a:
+
+Usuario (email): adalit.tic@gmail.com
+Contrase=C3=B1a: NuevaClaveAdalit123!
+
+Acceso: http://localhost:3000/login
+
+Por seguridad: inicia sesi=C3=B3n y =
+cambia la contrase=C3=B1a cuanto antes.
+Si no esperabas este correo, avisa =
+al administrador del laboratorio.
+
+=E2=80=94 SIC-ML =
+(laboratorio)
+----_NmP-8fb2fd62791cdb1d-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+  <div style=3D"font-family:system-ui,sans-serif;max-width:520px;margin:au=
+to;padding:24px;color:#202b38">
+    <h2 style=3D"margin:0 0 =
+12px;font-size:18px;color:#315b86">SIC-ML =C2=B7 Contrase=C3=B1a =
+restablecida</h2>
+    <p>Hola Adalit Ticona Torrez, un administrador =
+restableci=C3=B3 la contrase=C3=B1a de tu cuenta en SIC-ML. Nueva =
+contrase=C3=B1a:</p>
+    <table style=3D"border-collapse:collapse;margin:16=
+px 0">
+      <tr><td style=3D"padding:6px 12px 6px 0;color:#5d6b7a">Usuario=
+ (email)</td><td style=3D"padding:6px 0;font-family:monospace"><strong>adal=
+it.tic@gmail.com</strong></td></tr>
+      <tr><td style=3D"padding:6px 12px=
+ 6px 0;color:#5d6b7a">Contrase=C3=B1a</td><td style=3D"padding:6px =
+0;font-family:monospace"><strong>NuevaClaveAdalit123!</strong></td></tr>
+    </table>
+    <p><a href=3D"http://localhost:3000/login" =
+style=3D"background:#315b86;color:#fff;padding:10px =
+16px;border-radius:8px;text-decoration:none">Entrar al panel</a></p>
+    <p style=3D"color:#b54747;font-size:13px"><strong>Seguridad:</strong> =
+inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes. No compartas =
+estas credenciales.</p>
+    <p style=3D"color:#5d6b7a;font-size:12px">Si no=
+ esperabas este correo, avisa al administrador del laboratorio.</p>
+  </div>
+----_NmP-8fb2fd62791cdb1d-Part_1--
+
+=== MAIL ===
+From: "SIC-ML" <no-reply@sic-ml.lab.local>
+To: adalitotito07@gmail.com
+Subject: =?UTF-8?Q?SIC-ML_=C2=B7_Tu_cuenta_fue_creada_?=
+ =?UTF-8?Q?=E2=80=94_credenciales_de_acceso?=
+Message-ID: <cdd1e200-90bb-1285-e83c-5da8ad051d9e@sic-ml.lab.local>
+Date: Mon, 16 Nov 2026 17:39:36 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-12695bad44fdf2a2-Part_1"
+
+----_NmP-12695bad44fdf2a2-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Prueba Correo, un administrador cre=C3=B3 tu cuenta en SIC-ML. Estos =
+son tus datos de acceso iniciales:
+
+Usuario (email): adalitotito07@gmail.=
+com
+Contrase=C3=B1a: CorreoPrueba123!
+
+Acceso: http://localhost:3000/login
+
+Por seguridad: inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes.
+Si no esperabas este correo, avisa al administrador del laboratorio.
+
+=E2=80=94 SIC-ML (laboratorio)
+----_NmP-12695bad44fdf2a2-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+  <div style=3D"font-family:system-ui,sans-serif;max-width:520px;margin:au=
+to;padding:24px;color:#202b38">
+    <h2 style=3D"margin:0 0 =
+12px;font-size:18px;color:#315b86">SIC-ML =C2=B7 Cuenta creada</h2>
+    <p>Hola Prueba Correo, un administrador cre=C3=B3 tu cuenta en SIC-ML. =
+Estos son tus datos de acceso iniciales:</p>
+    <table =
+style=3D"border-collapse:collapse;margin:16px 0">
+      <tr><td =
+style=3D"padding:6px 12px 6px 0;color:#5d6b7a">Usuario (email)</td><td =
+style=3D"padding:6px 0;font-family:monospace"><strong>adalitotito07@gmail.=
+com</strong></td></tr>
+      <tr><td style=3D"padding:6px 12px 6px =
+0;color:#5d6b7a">Contrase=C3=B1a</td><td style=3D"padding:6px =
+0;font-family:monospace"><strong>CorreoPrueba123!</strong></td></tr>
+    </table>
+    <p><a href=3D"http://localhost:3000/login" =
+style=3D"background:#315b86;color:#fff;padding:10px =
+16px;border-radius:8px;text-decoration:none">Entrar al panel</a></p>
+    <p style=3D"color:#b54747;font-size:13px"><strong>Seguridad:</strong> =
+inicia sesi=C3=B3n y cambia la contrase=C3=B1a cuanto antes. No compartas =
+estas credenciales.</p>
+    <p style=3D"color:#5d6b7a;font-size:12px">Si no=
+ esperabas este correo, avisa al administrador del laboratorio.</p>
+  </div>
+----_NmP-12695bad44fdf2a2-Part_1--
+
