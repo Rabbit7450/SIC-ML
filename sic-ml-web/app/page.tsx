@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CyberAttackMap } from "@/components/public/cyber-attack-map";
+import { AttackMapOL } from "@/components/public/attack-map-ol";
 
 export default function HomePage() {
   return (
@@ -30,7 +30,7 @@ export default function HomePage() {
             <Link href="/preview"><Button size="lg" variant="outline">Explorar vista previa</Button></Link>
           </div>
         </div>
-        <CyberAttackMap />
+        <AttackMapOL />
       </main>
       <footer className="mx-auto w-full max-w-6xl border-t border-border py-5 text-xs text-muted">Plataforma integrada de monitoreo y análisis de seguridad</footer>
     </div>

@@ -1,11 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Pagination } from "@/components/ui/pagination";
 import { severityClass } from "@/lib/utils";
+
+const PAGE_SIZE = 5;
 
 type AlertRow = {
   id: string;
@@ -29,6 +32,7 @@ export function AlertsTable({
   const router = useRouter();
   const [severity, setSeverity] = useState("all");
   const [busy, setBusy] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
 
   const filtered = useMemo(
     () =>
@@ -36,6 +40,13 @@ export function AlertsTable({
         ? alerts
         : alerts.filter((a) => a.severity === severity),
     [alerts, severity],
+  );
+
+  useEffect(() => setPage(1), [severity]);
+
+  const visible = useMemo(
+    () => filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [filtered, page],
   );
 
   async function mutate(id: string, action: "soft_delete" | "hard_delete") {
@@ -106,7 +117,7 @@ export function AlertsTable({
             </tr>
           </thead>
           <tbody>
-            {filtered.map((alert) => (
+            {visible.map((alert) => (
               <tr
                 key={alert.id}
                 className="border-t border-border/70 hover:bg-primary/5"
@@ -157,6 +168,7 @@ export function AlertsTable({
           </tbody>
         </table>
       </div>
+      <Pagination page={page} pageSize={PAGE_SIZE} total={filtered.length} onPage={setPage} />
     </div>
   );
 }

@@ -7,7 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Pagination } from "@/components/ui/pagination";
 import { roleLabel } from "@/lib/roles";
+
+const PAGE_SIZE = 5;
 
 type Role = "admin" | "analista" | "viewer";
 type User = { id: string; email: string; full_name: string; role: Role; is_active: boolean; created_at: string };
@@ -26,6 +29,9 @@ export function UsersAdmin() {
   // Credenciales devueltas una sola vez cuando el SMTP no está configurado.
   const [issued, setIssued] = useState<{ email: string; password: string } | null>(null);
   const [copied, setCopied] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const visibleUsers = users.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const load = async () => {
     setLoading(true);
@@ -197,7 +203,7 @@ export function UsersAdmin() {
               </tr>
             </thead>
             <tbody>
-              {users.map((u) => (
+              {visibleUsers.map((u) => (
                 <tr key={u.id} className="border-t border-border hover:bg-primary/5">
                   <td className="min-w-0 max-w-xs p-3">
                     <p className="truncate font-medium" title={u.full_name}>{u.full_name}</p>
@@ -242,6 +248,9 @@ export function UsersAdmin() {
               ))}
             </tbody>
           </table>
+          <div className="p-3">
+            <Pagination page={page} pageSize={PAGE_SIZE} total={users.length} onPage={setPage} />
+          </div>
         </div>
       ) : (
         <EmptyState icon={Users} title="Sin cuentas registradas" description="Crea la primera cuenta desde el formulario de arriba." />

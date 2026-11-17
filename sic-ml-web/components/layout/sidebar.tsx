@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 import {
   Activity,
   FileBarChart,
   Bell,
   Cpu,
   LayoutDashboard,
+  LogOut,
   ScrollText,
   Settings,
   ShieldAlert,
@@ -35,7 +37,20 @@ export function Sidebar({
   role: AppRole;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [busy, setBusy] = useState(false);
   const links = navForRole(role);
+
+  async function logout() {
+    if (busy) return;
+    setBusy(true);
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } finally {
+      router.push("/login");
+      router.refresh();
+    }
+  }
 
   return (
     <aside className="flex w-full shrink-0 flex-col border-b border-border bg-card md:h-screen md:w-60 md:border-b-0 md:border-r">
@@ -74,6 +89,15 @@ export function Sidebar({
       </nav>
       <div className="border-t border-border p-4">
         <p className="text-xs text-muted">Rol de la cuenta: {ROLE_META[role].label}</p>
+        <button
+          type="button"
+          onClick={() => void logout()}
+          disabled={busy}
+          className="mt-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-border bg-background-elevated px-3 text-sm font-medium text-foreground transition hover:border-accent/40 hover:bg-accent/10 hover:text-accent focus-visible:outline-2 focus-visible:outline-primary disabled:opacity-60"
+        >
+          <LogOut className="h-4 w-4" aria-hidden="true" />
+          {busy ? "Cerrando…" : "Cerrar sesión"}
+        </button>
       </div>
     </aside>
   );

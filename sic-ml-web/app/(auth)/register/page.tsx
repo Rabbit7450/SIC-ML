@@ -2,7 +2,9 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { ShieldCheck } from "lucide-react";
+import { AuthCard } from "@/components/auth/auth-card";
+import { AuthVisual } from "@/components/auth/auth-visual";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -38,58 +40,61 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md rounded-3xl border border-border bg-card/80 p-8"
-      >
-        <h1 className="font-display text-2xl">Registro</h1>
-        <p className="mt-1 text-sm text-muted">
-          Rol inicial: viewer (un admin puede promoverte).
-        </p>
-        <form onSubmit={onSubmit} className="mt-6 space-y-4">
-          <Input
-            aria-label="Nombre completo"
-            placeholder="Nombre"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-          <Input
-            aria-label="Email"
-            type="email"
-            placeholder="correo@lab.local"
-            autoComplete="email"
-            spellCheck={false}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <Input
-            aria-label="Contraseña (mínimo 8 caracteres)"
-            type="password"
-            placeholder="Contraseña (mín. 8)"
-            autoComplete="new-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            minLength={8}
-            required
-          />
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Creando…" : "Crear cuenta"}
-          </Button>
-        </form>
-        <Link
-          href="/login"
-          className="mt-4 inline-block text-sm text-primary hover:underline"
-        >
-          Ya tengo cuenta
-        </Link>
-        {message ? (
-          <p className="mt-4 text-sm text-muted">{message}</p>
-        ) : null}
-      </motion.div>
+    <div className="grid min-h-dvh lg:grid-cols-2">
+      <AuthVisual />
+      <div className="flex items-center justify-center px-4 py-10">
+        <AuthCard>
+          <div className="mb-7 flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
+              <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h1 className="font-display text-2xl">Registro</h1>
+              <p className="mt-1 text-sm text-muted">Rol inicial: viewer (un admin puede promoverte).</p>
+            </div>
+          </div>
+
+          <form onSubmit={onSubmit} className="space-y-4">
+            <Input
+              aria-label="Nombre completo"
+              placeholder="Nombre"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+            <Input
+              aria-label="Email"
+              type="email"
+              placeholder="correo@lab.local"
+              autoComplete="email"
+              spellCheck={false}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Input
+              aria-label="Contraseña (mínimo 8 caracteres)"
+              type="password"
+              placeholder="Contraseña (mín. 8)"
+              autoComplete="new-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              minLength={8}
+              required
+            />
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Creando…" : "Crear cuenta"}
+            </Button>
+          </form>
+
+          <p className="mt-4 text-center text-xs">
+            <Link href="/login" className="text-primary hover:underline">Ya tengo cuenta</Link>
+            {" · "}
+            <Link href="/" className="text-primary hover:underline">Volver al inicio</Link>
+          </p>
+          {message ? <p role="status" className="mt-4 text-sm text-muted">{message}</p> : null}
+        </AuthCard>
+      </div>
     </div>
   );
 }

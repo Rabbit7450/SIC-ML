@@ -130,6 +130,28 @@ textarea {
   100% { background-position: -200% 0; }
 }
 
+/* --- Efectos 3D para las pantallas de auth --- */
+@keyframes float-y {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-14px); }
+}
+@keyframes ring-pulse {
+  0% { transform: perspective(700px) rotateX(62deg) scale(0.82); opacity: 0.9; }
+  100% { transform: perspective(700px) rotateX(62deg) scale(1.28); opacity: 0; }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); opacity: 0.55; }
+  50% { transform: translate(16px, -22px); opacity: 1; }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 20px 60px rgba(49, 91, 134, 0.45); }
+  50% { box-shadow: 0 24px 80px rgba(49, 91, 134, 0.75); }
+}
+.animate-float { animation: float-y 5s ease-in-out infinite; }
+.animate-ring { animation: ring-pulse 3.4s ease-out infinite; }
+.animate-drift { animation: drift 7s ease-in-out infinite; }
+.animate-glow { animation: glow-pulse 3s ease-in-out infinite; }
+
 @keyframes ambient-shift {
   0% { background-position: 0% 0%, 100% 100%, 0 0; }
   100% { background-position: 22% 18%, 78% 82%, 0 0; }
