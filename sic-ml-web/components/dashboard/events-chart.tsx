@@ -12,13 +12,13 @@ import {
 import { Card } from "@/components/ui/card";
 import { chartSeries } from "@/lib/demo-data";
 
-type EventPoint = { name: string; ids: number; iot: number; phishing: number };
+type EventPoint = { name: string; ids: number; iot: number; phishing: number; otros: number };
 
-export function EventsChart({ data = chartSeries }: { data?: EventPoint[] }) {
+export function EventsChart({ data = chartSeries, title = "Eventos por módulo", subtitle = "Últimos 30 días" }: { data?: EventPoint[]; title?: string; subtitle?: string }) {
   return (
     <Card className="h-[340px]">
-      <p className="mb-1 font-display text-lg">Eventos por módulo</p>
-      <p className="mb-4 text-xs text-muted">Últimos 7 días</p>
+      <p className="mb-1 font-display text-lg">{title}</p>
+      <p className="mb-4 text-xs text-muted">{subtitle}</p>
       {!data.length ? <p className="flex h-[260px] items-center justify-center text-sm text-muted">Sin eventos en el período seleccionado.</p> : (
       <div className="h-[260px] w-full" role="img" aria-label="Gráfico de eventos por módulo (IDS, IoT y phishing) en los últimos 7 días">
         <ResponsiveContainer width="100%" height="100%">
@@ -36,9 +36,13 @@ export function EventsChart({ data = chartSeries }: { data?: EventPoint[] }) {
                 <stop offset="5%" stopColor="var(--chart-phishing)" stopOpacity={0.16} />
                 <stop offset="95%" stopColor="var(--chart-phishing)" stopOpacity={0} />
               </linearGradient>
+              <linearGradient id="otros" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="var(--muted)" stopOpacity={0.18} />
+                <stop offset="95%" stopColor="var(--muted)" stopOpacity={0} />
+              </linearGradient>
             </defs>
             <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" />
-            <XAxis dataKey="name" stroke="var(--muted)" fontSize={12} />
+            <XAxis dataKey="name" stroke="var(--muted)" fontSize={11} interval={3} />
             <YAxis stroke="var(--muted)" fontSize={12} allowDecimals={false} width={28} />
             <Tooltip
               formatter={(value) => [String(value), "eventos"]}
@@ -69,6 +73,13 @@ export function EventsChart({ data = chartSeries }: { data?: EventPoint[] }) {
               dataKey="phishing"
               stroke="var(--chart-phishing)"
               fill="url(#phishing)"
+              strokeWidth={2}
+            />
+            <Area
+              type="monotone"
+              dataKey="otros"
+              stroke="var(--muted)"
+              fill="url(#otros)"
               strokeWidth={2}
             />
           </AreaChart>

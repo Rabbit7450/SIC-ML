@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Pagination } from "@/components/ui/pagination";
 import { roleLabel } from "@/lib/roles";
+import { NAME_PATTERN, validateName } from "@/lib/validation";
 
 const PAGE_SIZE = 5;
 
@@ -30,6 +31,7 @@ export function UsersAdmin() {
   const [issued, setIssued] = useState<{ email: string; password: string } | null>(null);
   const [copied, setCopied] = useState(false);
   const [page, setPage] = useState(1);
+  const [nameError, setNameError] = useState<string | null>(null);
 
   const visibleUsers = users.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
@@ -46,6 +48,9 @@ export function UsersAdmin() {
 
   const create = async (e: FormEvent) => {
     e.preventDefault();
+    const err = validateName(form.full_name);
+    setNameError(err);
+    if (err) return;
     setBusy(true);
     setMessage("");
     const r = await fetch("/api/admin/users", {
@@ -109,14 +114,28 @@ export function UsersAdmin() {
         <h2 className="font-display text-lg">Nueva cuenta</h2>
         <p className="mt-1 text-sm text-muted">Las cuentas nuevas entran con rol viewer; cámbialo después si corresponde.</p>
         <form onSubmit={create} className="mt-4 grid gap-3 md:grid-cols-4">
-          <Input
-            required
-            minLength={2}
-            aria-label="Nombre completo"
-            placeholder="Nombre completo"
-            value={form.full_name}
-            onChange={(e) => setForm({ ...form, full_name: e.target.value })}
-          />
+          <div>
+            <Input
+              required
+              minLength={2}
+              aria-label="Nombre completo (solo letras, sin números)"
+              placeholder="Nombre completo (solo letras)"
+              pattern={NAME_PATTERN.source}
+              title="Solo letras, espacios, guion, apóstrofo o punto. Sin números."
+              aria-invalid={Boolean(nameError)}
+              aria-describedby={nameError ? "user-name-error" : undefined}
+              value={form.full_name}
+              onChange={(e) => {
+                setForm({ ...form, full_name: e.target.value });
+                setNameError(validateName(e.target.value));
+              }}
+            />
+            {nameError ? (
+              <p id="user-name-error" role="alert" className="mt-1.5 text-xs text-accent">
+                {nameError}
+              </p>
+            ) : null}
+          </div>
           <Input
             required
             type="email"

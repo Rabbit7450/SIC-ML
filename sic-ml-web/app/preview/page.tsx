@@ -46,10 +46,12 @@ export default function PreviewPage() {
         </div>
 
         <KpiCards
-          alerts={demoAlerts.length}
-          devicesOnline={online}
-          modelsDeployed={deployed}
-          critical={critical}
+          items={[
+            { label: "Alertas activas", value: demoAlerts.length, accent: "border-l-primary" },
+            { label: "Nodos online", value: online, accent: "border-l-secondary" },
+            { label: "Modelos desplegados", value: deployed, accent: "border-l-muted" },
+            { label: "Severidad crítica", value: critical, accent: "border-l-accent" },
+          ]}
         />
 
         <div className="grid gap-3 sm:grid-cols-3">

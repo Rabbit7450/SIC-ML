@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Pagination } from "@/components/ui/pagination";
+
+const PAGE_SIZE = 5;
 
 type Device = {
   id: string;
@@ -27,6 +30,9 @@ export function DevicesPanel({
   const [name, setName] = useState("");
   const [nodeId, setNodeId] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+
+  const visible = devices.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   async function createDevice(e: FormEvent) {
     e.preventDefault();
@@ -82,8 +88,9 @@ export function DevicesPanel({
       </Card>
       ) : null}
 
-      {devices.length ? <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {devices.map((device, i) => (
+      {devices.length ? <>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {visible.map((device, i) => (
           <FadeIn key={device.id} delay={i * 0.05}>
             <Card glow={device.status === "online"}>
               <div className="flex items-start justify-between">
@@ -120,7 +127,9 @@ export function DevicesPanel({
             </Card>
           </FadeIn>
         ))}
-      </div> : <EmptyState title="Sin dispositivos registrados" description="Registra un nodo ESP32 o espera a que el gateway publique el primer dispositivo." />}
+      </div>
+      <Pagination page={page} pageSize={PAGE_SIZE} total={devices.length} onPage={setPage} />
+      </> : <EmptyState title="Sin dispositivos registrados" description="Registra un nodo ESP32 o espera a que el gateway publique el primer dispositivo." />}
     </div>
   );
 }

@@ -152,6 +152,35 @@ textarea {
 .animate-drift { animation: drift 7s ease-in-out infinite; }
 .animate-glow { animation: glow-pulse 3s ease-in-out infinite; }
 
+/* --- Home: ticker y efectos 3D hover --- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-bob { animation: bob 4.5s ease-in-out infinite; }
+
+/* Tarjeta 3D al hover (efecto tilt) */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.card-3d:hover {
+  transform: perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-6px);
+  box-shadow: 0 24px 50px -12px rgba(32, 43, 56, 0.28);
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+}
+.card-3d .card-3d-icon {
+  transform: translateZ(34px);
+  transition: transform 0.35s ease;
+}
+
 @keyframes ambient-shift {
   0% { background-position: 0% 0%, 100% 100%, 0 0; }
   100% { background-position: 22% 18%, 78% 82%, 0 0; }

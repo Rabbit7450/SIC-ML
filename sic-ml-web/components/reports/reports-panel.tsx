@@ -2,11 +2,14 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText } from "lucide-react";
+import { Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+
+const PAGE_SIZE = 5;
 
 export type ReportRow = {
   id: string;
@@ -30,6 +33,27 @@ export function ReportsPanel({
   const [summary, setSummary] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const visibleReports = reports.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  /** Descarga los informes actuales como Excel (.xlsx) generado en el cliente. */
+  async function downloadExcel() {
+    if (!reports.length) return;
+    const XLSX = await import("xlsx");
+    const rows = reports.map((r) => ({
+      ID: r.id,
+      Título: r.title,
+      Tipo: r.report_type,
+      Resumen: r.summary ?? "",
+      Creado: r.created_at ? new Date(r.created_at).toLocaleString("es-BO") : "",
+    }));
+    const ws = XLSX.utils.json_to_sheet(rows);
+    ws["!cols"] = [{ wch: 36 }, { wch: 42 }, { wch: 20 }, { wch: 70 }, { wch: 24 }];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Informes");
+    XLSX.writeFile(wb, `informes-sicml-${new Date().toISOString().slice(0, 10)}.xlsx`);
+  }
 
   async function submit(event: FormEvent) {
     event.preventDefault();
@@ -80,9 +104,22 @@ export function ReportsPanel({
       <section className="space-y-3">
         <div className="flex items-baseline justify-between">
           <h2 className="font-display text-lg">Informes recientes</h2>
-          <span className="text-xs text-muted">{reports.length} registros</span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-muted">{reports.length} registros</span>
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              onClick={() => void downloadExcel()}
+              disabled={!reports.length}
+              aria-label="Descargar informes en formato Excel"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Excel (.xlsx)
+            </Button>
+          </div>
         </div>
-        {reports.length ? reports.map((report) => (
+        {reports.length ? visibleReports.map((report) => (
           <Card key={report.id} className="flex items-start gap-3">
             <FileText className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
             <div className="min-w-0 flex-1">
@@ -92,6 +129,7 @@ export function ReportsPanel({
             </div>
           </Card>
         )) : <EmptyState title="Todavía no hay informes" description="Crea el primer resumen del equipo o espera a que se registre uno." />}
+        {reports.length ? <Pagination page={page} pageSize={PAGE_SIZE} total={reports.length} onPage={setPage} /> : null}
       </section>
     </div>
   );

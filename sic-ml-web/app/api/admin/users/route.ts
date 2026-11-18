@@ -4,10 +4,11 @@ import { sql } from "drizzle-orm";
 import { z } from "zod";
 import { getDb } from "@/lib/db";
 import { isMailConfigured, sendCredentialsEmail } from "@/lib/mail";
+import { nameSchema } from "@/lib/validation";
 
 const role = z.enum(["admin", "analista", "viewer"]);
-const createSchema = z.object({ full_name: z.string().trim().min(2).max(100), email: z.string().trim().email(), role, password: z.string().min(8).max(128) });
-const updateSchema = z.object({ id: z.string().uuid(), full_name: z.string().trim().min(2).max(100).optional(), role: role.optional(), password: z.string().min(8).max(128).optional() });
+const createSchema = z.object({ full_name: nameSchema, email: z.string().trim().email(), role, password: z.string().min(8).max(128) });
+const updateSchema = z.object({ id: z.string().uuid(), full_name: nameSchema.optional(), role: role.optional(), password: z.string().min(8).max(128).optional() });
 const idSchema = z.object({ id: z.string().uuid() });
 
 async function adminId() {
@@ -29,7 +30,7 @@ export async function POST(request: Request) {
     const actor = await adminId();
     if (!actor) return NextResponse.json({ error: "Acceso restringido." }, { status: 403 });
     const parsed = createSchema.safeParse(await request.json());
-    if (!parsed.success) return NextResponse.json({ error: "Revisa los datos de la cuenta." }, { status: 400 });
+    if (!parsed.success) return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Revisa los datos de la cuenta." }, { status: 400 });
     const u = parsed.data;
 
     const rows = await getDb().execute(sql`INSERT INTO profiles (email, full_name, role, password_hash) VALUES (${u.email}, ${u.full_name}, ${u.role}, crypt(${u.password}, gen_salt('bf'))) RETURNING id, email, full_name, role, is_active, created_at`);
@@ -70,7 +71,7 @@ export async function POST(request: Request) {
   }
 }
 export async function PATCH(request: Request) {
-  try { const actor = await adminId(); if (!actor) return NextResponse.json({ error: "Acceso restringido." }, { status: 403 }); const parsed = updateSchema.safeParse(await request.json()); if (!parsed.success) return NextResponse.json({ error: "Datos inválidos." }, { status: 400 }); const u = parsed.data;
+  try { const actor = await adminId(); if (!actor) return NextResponse.json({ error: "Acceso restringido." }, { status: 403 }); const parsed = updateSchema.safeParse(await request.json()); if (!parsed.success) return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Datos inválidos." }, { status: 400 }); const u = parsed.data;
     if (u.full_name !== undefined) await getDb().execute(sql`UPDATE profiles SET full_name = ${u.full_name}, updated_at = now() WHERE id = ${u.id}::uuid AND deleted_at IS NULL`);
     if (u.role !== undefined) await getDb().execute(sql`UPDATE profiles SET role = ${u.role}, updated_at = now() WHERE id = ${u.id}::uuid AND deleted_at IS NULL`);
     let emailed: boolean | undefined;

@@ -7,9 +7,11 @@ import { AuthCard } from "@/components/auth/auth-card";
 import { AuthVisual } from "@/components/auth/auth-visual";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { validateName, NAME_PATTERN } from "@/lib/validation";
 
 export default function RegisterPage() {
   const [fullName, setFullName] = useState("");
+  const [nameError, setNameError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState<string | null>(null);
@@ -17,6 +19,9 @@ export default function RegisterPage() {
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    const err = validateName(fullName);
+    setNameError(err);
+    if (err) return;
     setLoading(true);
     setMessage(null);
 
@@ -55,13 +60,27 @@ export default function RegisterPage() {
           </div>
 
           <form onSubmit={onSubmit} className="space-y-4">
-            <Input
-              aria-label="Nombre completo"
-              placeholder="Nombre"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
+            <div>
+              <Input
+                aria-label="Nombre completo (solo letras, sin números)"
+                placeholder="Nombre (solo letras)"
+                value={fullName}
+                pattern={NAME_PATTERN.source}
+                title="Solo letras, espacios, guion, apóstrofo o punto. Sin números."
+                aria-invalid={Boolean(nameError)}
+                aria-describedby={nameError ? "name-error" : undefined}
+                onChange={(e) => {
+                  setFullName(e.target.value);
+                  setNameError(validateName(e.target.value));
+                }}
+                required
+              />
+              {nameError && (
+                <p id="name-error" role="alert" className="mt-1.5 text-xs text-accent">
+                  {nameError}
+                </p>
+              )}
+            </div>
             <Input
               aria-label="Email"
               type="email"

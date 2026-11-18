@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 import { sql } from "drizzle-orm";
 import { z } from "zod";
 import { getDb } from "@/lib/db";
+import { nameSchema } from "@/lib/validation";
 
 const schema = z.object({
-  full_name: z.string().trim().min(2).max(100),
+  full_name: nameSchema,
   email: z.string().trim().email().max(200),
   password: z.string().min(8).max(128),
 });
@@ -16,7 +17,10 @@ const schema = z.object({
 export async function POST(request: Request) {
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
-    return NextResponse.json({ error: "Nombre, email válido y contraseña (mín. 8 caracteres) son requeridos." }, { status: 400 });
+    return NextResponse.json(
+      { error: parsed.error.issues[0]?.message ?? "Datos inválidos: nombre (sin números), email válido y contraseña (mín. 8)." },
+      { status: 400 },
+    );
   }
   try {
     const rows = await getDb().execute(sql`

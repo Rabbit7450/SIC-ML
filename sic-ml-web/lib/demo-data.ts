@@ -16,8 +16,8 @@ export const demoModels: Array<{
 }> = [];
 
 export const chartSeries = [
-  { name: "Lun", ids: 0, iot: 0, phishing: 0 }, { name: "Mar", ids: 0, iot: 0, phishing: 0 },
-  { name: "Mié", ids: 0, iot: 0, phishing: 0 }, { name: "Jue", ids: 0, iot: 0, phishing: 0 },
-  { name: "Vie", ids: 0, iot: 0, phishing: 0 }, { name: "Sáb", ids: 0, iot: 0, phishing: 0 },
-  { name: "Dom", ids: 0, iot: 0, phishing: 0 },
+  { name: "Lun", ids: 0, iot: 0, phishing: 0, otros: 0 }, { name: "Mar", ids: 0, iot: 0, phishing: 0, otros: 0 },
+  { name: "Mié", ids: 0, iot: 0, phishing: 0, otros: 0 }, { name: "Jue", ids: 0, iot: 0, phishing: 0, otros: 0 },
+  { name: "Vie", ids: 0, iot: 0, phishing: 0, otros: 0 }, { name: "Sáb", ids: 0, iot: 0, phishing: 0, otros: 0 },
+  { name: "Dom", ids: 0, iot: 0, phishing: 0, otros: 0 },
 ];

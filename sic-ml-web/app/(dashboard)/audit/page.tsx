@@ -1,7 +1,6 @@
 import { AccessDenied } from "@/components/layout/access-denied";
 import { Topbar } from "@/components/layout/topbar";
-import { Card } from "@/components/ui/card";
-import { EmptyState } from "@/components/ui/empty-state";
+import { AuditPanel, type AuditLogItem } from "@/components/audit/audit-panel";
 import { sql } from "drizzle-orm";
 import { getDb } from "@/lib/db";
 import { getAppRole } from "@/lib/current-role";
@@ -44,6 +43,11 @@ export default async function AuditPage() {
     );
   }
 
+  const serialized: AuditLogItem[] = logs.map((l) => ({
+    ...l,
+    created_at: new Date(l.created_at).toISOString(),
+  }));
+
   return (
     <>
       <Topbar
@@ -52,48 +56,7 @@ export default async function AuditPage() {
       />
       <div className="space-y-4 p-6">
         <DataState state={state} />
-        {logs.filter((log) => log.action === "login").length ? (
-          <Card>
-            <div className="flex items-baseline justify-between gap-3 border-b border-border pb-3">
-              <div><h2 className="font-display text-lg">Ingresos de usuarios</h2><p className="mt-1 text-sm text-muted">Sesiones validadas con contraseña local.</p></div>
-              <span className="text-xs text-muted">{logs.filter((log) => log.action === "login").length} recientes</span>
-            </div>
-            <ul className="divide-y divide-border">
-              {logs.filter((log) => log.action === "login").map((log) => (
-                <li key={log.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
-                  <span><span className="font-medium">{log.actor_email ?? "Usuario eliminado"}</span><span className="ml-2 text-muted">Ingreso con contraseña</span></span>
-                  <time className="text-xs text-muted">{new Date(log.created_at).toLocaleString("es-BO")}</time>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        ) : null}
-        {!logs.length && state !== "error" ? (
-          <EmptyState
-            title="Sin eventos de auditoría"
-            description="Cuando crees, restaures o borres registros, el trail aparecerá aquí."
-          />
-        ) : logs.length ? (
-          <Card>
-            <ul className="divide-y divide-border">
-              {logs.map((log) => (
-                <li
-                  key={log.id}
-                  className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm"
-                >
-                  <span>
-                    <span className="text-primary">{log.action === "login" ? "inicio de sesión" : log.action}</span> en{" "}
-                    <span className="font-mono">{log.entity_table}</span>
-                    {log.actor_email ? <span className="ml-2 text-xs text-muted">por {log.actor_email}</span> : null}
-                  </span>
-                  <span className="text-xs text-muted">
-                    {new Date(log.created_at).toLocaleString()}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        ) : null}
+        {state === "error" ? null : <AuditPanel logs={serialized} />}
       </div>
     </>
   );

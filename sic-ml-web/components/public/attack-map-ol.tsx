@@ -151,7 +151,7 @@ export function AttackMapOL() {
         <div className="relative">
           <div
             ref={mapRef}
-            className="h-[300px] w-full lg:h-[340px]"
+            className="h-[380px] w-full lg:h-[500px]"
             role="application"
             aria-label="Mapa mundial con referencias de amenazas (OpenLayers)"
           />

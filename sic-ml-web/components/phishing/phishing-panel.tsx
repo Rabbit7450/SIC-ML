@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
 import { PhishingResultCard } from "@/components/phishing/phishing-result-card";
 import type { PhishingHistoryItem } from "@/lib/phishing";
+
+const PAGE_SIZE = 5;
 
 /**
  * Único apartado de phishing: un formulario (blocklist + modelo ML vía
@@ -25,6 +28,9 @@ export function PhishingPanel({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<PhishingHistoryItem[]>(initialHistory);
+  const [page, setPage] = useState(1);
+
+  const visible = history.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -105,7 +111,7 @@ export function PhishingPanel({
         </div>
         {history.length ? (
           <div className="grid gap-3">
-            {history.map((item, i) => (
+            {visible.map((item, i) => (
               <FadeIn key={item.id ?? `${item.url}-${i}`} delay={i * 0.04}>
                 <PhishingResultCard result={item} />
               </FadeIn>
@@ -117,6 +123,7 @@ export function PhishingPanel({
             description="Analiza una URL para ver aquí el veredicto del modelo y de la lista de phishing."
           />
         )}
+        {history.length ? <Pagination page={page} pageSize={PAGE_SIZE} total={history.length} onPage={setPage} /> : null}
       </section>
     </section>
   );
